@@ -6,7 +6,7 @@ import (
 	"restaurantBot/internal/pkg/keyboards"
 )
 
-func CommandsAndText(update tgbotapi.Update, bot *tgbotapi.BotAPI) {
+func Commands(update tgbotapi.Update, bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 	switch update.Message.Text {
 	case "/start":
 		sendMessageWithKeyboard(bot, update.Message.Chat.ID, fmt.Sprintf("Привет %s !\nЯ помогу тебе сделать бронирование!", update.Message.From),
