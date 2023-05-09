@@ -1,6 +1,7 @@
 package pkg
 
 import (
+	"encoding/json"
 	"fmt"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"restaurantBot/internal/pkg/adapter"
@@ -156,8 +157,14 @@ func Callback(update tgbotapi.Update, bot *tgbotapi.BotAPI, db *clickHouse.DBCon
 			"Выбери тип бронирования", history.MainKeyboard)
 	case "standard":
 		//clickhouse
+		userDatabaseAdapter := adapter.CreateAdapter(db)
+		a := userDatabaseAdapter.Get()
+		usersJSON, err := json.Marshal(a)
+		if err != nil {
+			fmt.Printf("Error in marshalalling func GetALLTours: %v", err)
+		}
 		sendMessageWithKeyboard(bot, update.CallbackQuery.Message.Chat.ID,
-			"История стандартных бронирований:", keyboards.MenuKeyboard)
+			"История стандартных бронирований:"+string(usersJSON), keyboards.MenuKeyboard)
 	case "banquetHistory":
 		//clickhouse
 		sendMessageWithKeyboard(bot, update.CallbackQuery.Message.Chat.ID,
