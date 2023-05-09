@@ -3,6 +3,8 @@ package pkg
 import (
 	"fmt"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"restaurantBot/internal/pkg/adapter"
+	"restaurantBot/internal/pkg/clickHouse"
 	"restaurantBot/internal/pkg/keyboards"
 	"restaurantBot/internal/pkg/keyboards/FAQ"
 	"restaurantBot/internal/pkg/keyboards/banquet"
@@ -21,7 +23,7 @@ func addButton(text, callbackData string) (keyboard tgbotapi.InlineKeyboardMarku
 	return
 }
 
-func Callback(update tgbotapi.Update, bot *tgbotapi.BotAPI) {
+func Callback(update tgbotapi.Update, bot *tgbotapi.BotAPI, db *clickHouse.DBConnect) {
 	switch update.CallbackQuery.Data {
 	case "menu":
 		sendMessageWithoutKeyboard(bot, update.CallbackQuery.Message.Chat.ID,
@@ -38,6 +40,9 @@ func Callback(update tgbotapi.Update, bot *tgbotapi.BotAPI) {
 			"Выбери тип бронирования", booking.SecondFloorKeyboard)
 	case "bar":
 		//clickhouse
+		userDatabaseAdapter := adapter.CreateAdapter(db)
+		userDatabaseAdapter.Get()
+
 		keyboard := addButton("1.05 10:00", "1.05_10:00BarBooking")
 		sendMessageWithKeyboard(bot, update.CallbackQuery.Message.Chat.ID,
 			"Пожалуйста, укажите предпочтительную дату и время из доступных на ближайшую неделю", keyboard)
