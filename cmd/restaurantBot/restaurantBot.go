@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-	db := clickHouse.DBConnect{Ip: "3", Port: 9440, Password: "3", User: "3", Database: "tour"}
+	db := clickHouse.DBConnect{}
 
 	err := db.Open()
 	if err != nil {
-		log.Printf("Can not connect to ClickHouse: %s:%s", db.Ip, db.Port)
+		log.Printf("Can not connect to ClickHouse: %s:%v", db.Ip, db.Port)
 		panic(err)
 	}
 
