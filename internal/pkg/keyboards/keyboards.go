@@ -29,19 +29,3 @@ var MenuKeyboard = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardButtonData("Главная", "menu"),
 	),
 )
-
-var EmptyKeyboard = tgbotapi.NewInlineKeyboardMarkup()
-
-//var buttons = []tgbotapi.KeyboardButton{
-//	tgbotapi.NewKeyboardButton("Button 1"),
-//	tgbotapi.NewKeyboardButton("Button 2"),
-//}
-//
-//var rows = [][]tgbotapi.KeyboardButton{
-//	buttons,
-//}
-//
-//var Keyboard = tgbotapi.ReplyKeyboardMarkup{
-//	Keyboard:       rows,
-//	ResizeKeyboard: true,
-//}

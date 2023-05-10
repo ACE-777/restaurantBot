@@ -16,13 +16,8 @@ func sendMessageWithoutKeyboard(bot *tgbotapi.BotAPI, chatID int64, text string)
 func sendMessageWithKeyboard(bot *tgbotapi.BotAPI, chatID int64, text string, keyboard tgbotapi.InlineKeyboardMarkup) {
 	msg := tgbotapi.NewMessage(chatID, text)
 	msg.ReplyMarkup = keyboard
-	//msg.ReplyMarkup = keyboard
 	_, err := bot.Send(msg)
 	if err != nil {
 		log.Println(err)
 	}
-}
-
-func SendCallbackWithKeyboard() {
-
 }

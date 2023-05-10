@@ -37,15 +37,15 @@ var FeeKeyboard = tgbotapi.NewInlineKeyboardMarkup(
 
 var FeeKeyboardTwoVegetable = tgbotapi.NewInlineKeyboardMarkup(
 	tgbotapi.NewInlineKeyboardRow(
-		tgbotapi.NewInlineKeyboardButtonData("сорбет", "sorbetFeeVegetable"),
-		tgbotapi.NewInlineKeyboardButtonData("тирамису", "tiramisuFeeVegetable"),
+		tgbotapi.NewInlineKeyboardButtonData("Сорбет", "sorbetFeeVegetable"),
+		tgbotapi.NewInlineKeyboardButtonData("Тирамису", "tiramisuFeeVegetable"),
 	),
 )
 
 var FeeKeyboardTwoMeat = tgbotapi.NewInlineKeyboardMarkup(
 	tgbotapi.NewInlineKeyboardRow(
-		tgbotapi.NewInlineKeyboardButtonData("сорбет", "sorbetFeeMeat"),
-		tgbotapi.NewInlineKeyboardButtonData("тирамису", "tiramisuFeeMeat"),
+		tgbotapi.NewInlineKeyboardButtonData("Сорбет", "sorbetFeeMeat"),
+		tgbotapi.NewInlineKeyboardButtonData("Тирамису", "tiramisuFeeMeat"),
 	),
 )
 
@@ -67,15 +67,5 @@ var WithoutFeeKeyboard = tgbotapi.NewInlineKeyboardMarkup(
 	tgbotapi.NewInlineKeyboardRow(
 		tgbotapi.NewInlineKeyboardButtonData("Овощной салат", "VegetableWithoutFee"),
 		tgbotapi.NewInlineKeyboardButtonData("Мясной салат", "MeatWithoutFee"),
-	),
-)
-
-var MenuKeyboard = tgbotapi.NewInlineKeyboardMarkup(
-	tgbotapi.NewInlineKeyboardRow(
-		tgbotapi.NewInlineKeyboardButtonData("Со сбором", "withFee"),
-		tgbotapi.NewInlineKeyboardButtonData("Без сбора", "withoutFee"),
-	),
-	tgbotapi.NewInlineKeyboardRow(
-		tgbotapi.NewInlineKeyboardButtonData("Главная", "menu"),
 	),
 )

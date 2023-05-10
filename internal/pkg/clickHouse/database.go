@@ -34,13 +34,6 @@ func (client *DBConnect) Open() error {
 		log.Fatal(err)
 	}
 
-	//driver := "clickhouse"
-	//
-	//db, err := sql.Open(driver, fmt.Sprintf("tcp://%s:%s?username=%s&password%s&database%s", client.Ip, client.Port, client.User, client.Password, client.Database))
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-
 	client.Connection = db
 	return nil
 }

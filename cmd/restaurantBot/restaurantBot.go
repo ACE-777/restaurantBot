@@ -34,7 +34,7 @@ func main() {
 
 	for update := range updates {
 		if update.Message != nil {
-			pkg.Commands(update, bot, update.Message)
+			pkg.Commands(update, bot)
 		} else if update.CallbackQuery != nil {
 			pkg.Callback(update, bot, &db)
 		}
