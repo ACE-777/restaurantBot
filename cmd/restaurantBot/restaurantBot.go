@@ -8,7 +8,10 @@ import (
 )
 
 func main() {
-	db := clickHouse.DBConnect{}
+
+	token, ip, port, password, user, database := pkg.GetFlags()
+
+	db := clickHouse.DBConnect{Ip: ip, Port: port, Password: password, User: user, Database: database}
 
 	err := db.Open()
 	if err != nil {
@@ -18,7 +21,7 @@ func main() {
 
 	defer db.Close()
 
-	bot, err := tgbotapi.NewBotAPI("6017463153:AAEhp1iy3e4MuyxpyTyfoyuN64W3ZzQ3F-M")
+	bot, err := tgbotapi.NewBotAPI(token)
 	if err != nil {
 		log.Panic(err)
 	}
