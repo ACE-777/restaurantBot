@@ -2,7 +2,7 @@ package adapter
 
 import (
 	"context"
-	"fmt"
+	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
 	"log"
 	"restaurantBot/internal/pkg/clickHouse"
 )
@@ -28,17 +28,17 @@ func (adapterDb *Client) Get() []*GetMessage {
 		log.Fatal(err)
 	}
 
-	defer rows.Close()
+	defer func(rows driver.Rows) { _ = rows.Close() }(rows)
 
 	gets := make([]*GetMessage, 0)
 
 	for rows.Next() {
 		get := &GetMessage{}
-		if err := rows.Scan(&get.ID, &get.Message); err != nil {
+		if err = rows.Scan(&get.ID, &get.Message); err != nil {
 			log.Fatal(err)
 		}
+
 		gets = append(gets, get)
-		fmt.Println("====================================")
 	}
 
 	return gets
