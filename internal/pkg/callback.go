@@ -59,7 +59,7 @@ func Callback(update tgbotapi.Update, bot *tgbotapi.BotAPI, db *clickHouse.DBCon
 
 	case "personalize":
 		sendMessageWithKeyboard(bot, update.CallbackQuery.Message.Chat.ID,
-			"Спасибо за Вашу заявку.\nВ скором времени,наш менеджер свяжется с Вами для подробного обсуждения всех моментов!",
+			"Спасибо за Вашу заявку.\nВ скором времени, наш менеджер свяжется с Вами для подробного обсуждения всех моментов!",
 			banquet.PersonalizeKeyboard)
 	case "ready":
 		sendMessageWithKeyboard(bot, update.CallbackQuery.Message.Chat.ID,
